@@ -1,76 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>Drag &amp; Drop Table Columns by alexshnur</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Drag-n-drop-table-columns by alexshnur</title>
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/alexshnur/drag-n-drop-table-columns">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/alexshnur/drag-n-drop-table-columns/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/alexshnur/drag-n-drop-table-columns/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-        <header>
-          <h1>Drag-n-drop-table-columns</h1>
-          <h2>Drag &amp; Drop Table Columns</h2>
-        </header>
+    <div class="wrapper">
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/alexshnur/drag-n-drop-table-columns/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/alexshnur/drag-n-drop-table-columns/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/alexshnur/drag-n-drop-table-columns" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+      <section>
+        <div id="title">
+          <h1>Drag &amp; Drop Table Columns</h1>
+          <p>Drag &amp; Drop Table Columns</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/alexshnur">alexshnur</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-        <hr>
+        <h1>
+<a name="drag--drop-table-columns-v01" class="anchor" href="#drag--drop-table-columns-v01"><span class="octicon octicon-link"></span></a>Drag &amp; Drop Table Columns v.0.1</h1>
 
-        <section id="main_content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<p>Work in IE10+, Google Chrome, Mozzila Firefox</p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code>&lt;div class="table-responsive container"&gt;
+    &lt;table class="table table-bordered"&gt;
+        &lt;thead&gt;
+            &lt;tr class="dnd-moved"&gt;
+                &lt;th&gt;Column #1&lt;/th&gt;
+                &lt;th&gt;Column #2&lt;/th&gt;
+                &lt;th&gt;Column #3&lt;/th&gt;
+                &lt;th&gt;Column #4&lt;/th&gt;
+                &lt;th&gt;Column #5&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr class="dnd-moved"&gt;
+                &lt;td&gt;Row #1-1&lt;/td&gt;
+                &lt;td&gt;Row #1-2&lt;/td&gt;
+                &lt;td&gt;Row #1-3&lt;/td&gt;
+                &lt;td&gt;Row #1-4&lt;/td&gt;
+                &lt;td&gt;Row #1-5&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="dnd-moved"&gt;
+                &lt;td&gt;Row #2-1&lt;/td&gt;
+                &lt;td&gt;Row #2-2&lt;/td&gt;
+                &lt;td&gt;Row #2-3&lt;/td&gt;
+                &lt;td&gt;Row #2-4&lt;/td&gt;
+                &lt;td&gt;Row #2-5&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="dnd-moved"&gt;
+                &lt;td&gt;Row #3-1&lt;/td&gt;
+                &lt;td&gt;Row #3-2&lt;/td&gt;
+                &lt;td&gt;Row #3-3&lt;/td&gt;
+                &lt;td&gt;Row #3-4&lt;/td&gt;
+                &lt;td&gt;Row #3-5&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+&lt;script src="js/jquery-1.11.0.min.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="js/dragndrop.table.columns.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script&gt;
+    $('.table').dragableColumns();
+&lt;/script&gt;
 </code></pre>
+      </section>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
-
-        <footer>
-          Drag-n-drop-table-columns is maintained by <a href="https://github.com/alexshnur">alexshnur</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
     </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
