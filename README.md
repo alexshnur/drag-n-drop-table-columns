@@ -1,6 +1,8 @@
 Drag & Drop Table Columns v.0.1
 =========================
 
+Demo page http://alexshnur.github.io/drag-n-drop-table-columns/
+
 Work in IE10+, Google Chrome, Mozzila Firefox
 
 	<div class="table-responsive container">
