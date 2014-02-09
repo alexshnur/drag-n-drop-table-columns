@@ -1,4 +1,4 @@
-drag-n-drop-table-columns
+Drag & Drop Table Columns
 =========================
 
 Drag &amp; Drop Table Columns
