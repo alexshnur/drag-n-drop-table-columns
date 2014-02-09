@@ -20,13 +20,13 @@
 				cols = $table.find('thead tr th');
 				jQuery.event.props.push('dataTransfer');
 				[].forEach.call(cols, function(col){
-					col.setAttribute('draggable', true);
-					col.addEventListener('dragstart', _this.handleDragStart, false);
-					col.addEventListener('dragenter', _this.handleDragEnter, false);
-					col.addEventListener('dragover', _this.handleDragOver, false);
-					col.addEventListener('dragleave', _this.handleDragLeave, false);
-					col.addEventListener('drop', _this.handleDrop, false);
-					col.addEventListener('dragend', _this.handleDragEnd, false);
+					$(col).attr('draggable', true);
+					$(col).on('dragstart', _this.handleDragStart);
+					$(col).on('dragenter', _this.handleDragEnter);
+					$(col).on('dragover', _this.handleDragOver);
+					$(col).on('dragleave', _this.handleDragLeave);
+					$(col).on('drop', _this.handleDrop);
+					$(col).on('dragend', _this.handleDragEnd);
 				});
 			}
 		}
