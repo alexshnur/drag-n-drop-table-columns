@@ -10,7 +10,6 @@
 		function dragableColumns (table) {
 			if (this.options.drag) {
 				_this = this;
-				console.log(_this.options.dragClass);
 				cols = document.querySelectorAll(_this.options.tableClass + ' thead tr th');
 				jQuery.event.props.push('dataTransfer');
 				[].forEach.call(cols, function(col){
@@ -75,7 +74,6 @@
 			},
 			moveColumns: function (fromIndex, toIndex) {
 				var rows = $(_this.options.tableClass).find(_this.options.trMovedClass);
-				console.log(rows);
 				for (var i = 0; i < rows.length; i++) {
 					if (toIndex > fromIndex) {
 						insertAfter(rows[i].children[fromIndex], rows[i].children[toIndex]);
@@ -94,7 +92,6 @@
 		dragableColumns: function(){
 			return this.each(function() {
 				var $table = $(this), data;
-				console.log(this);
 				data = new dragableColumns($table);
 			});
 		}
