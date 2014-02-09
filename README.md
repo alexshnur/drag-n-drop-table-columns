@@ -3,16 +3,6 @@ Drag & Drop Table Columns
 
 Drag &amp; Drop Table Columns
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Drag & Drop Table Columns</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
-	<link rel="stylesheet" href="css/dragndrop.table.columns.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
-<body>
 	<div class="table-responsive container">
 		<table class="table table-bordered">
 			<thead>
@@ -54,5 +44,3 @@ Drag &amp; Drop Table Columns
 	<script>
 		$('.table').dragableColumns();
 	</script>
-</body>
-</html>
