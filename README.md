@@ -1,4 +1,4 @@
-Drag & Drop Table Columns
+Drag & Drop Table Columns v.0.1
 =========================
 
 Work in IE10+, Google Chrome, Mozzila Firefox
