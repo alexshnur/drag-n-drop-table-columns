@@ -87,7 +87,15 @@
 		<code>&lt;script src="js/dragndrop.table.columns.js"&gt;&lt;/script&gt;</code><br />
 		<code>&lt;script&gt;</code><br />
 		<code>	$('.table').dragableColumns();</code><br />
-		<code>&lt;/script&gt;</code><br />
+		<code>&lt;/script&gt;</code><br /><br />
+		<blockquote><p class="text-warning">Use parameters for Drag Table Columns</p></blockquote>
+	<pre>
+$('.table').dragableColumns({
+   drag: true,
+   dragClass: 'drag',
+   overClass: 'over',
+   movedContainerSelector: '.dnd-moved'
+});</pre>
 
 	</div>
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
