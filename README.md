@@ -1,7 +1,7 @@
 Drag & Drop Table Columns
 =========================
 
-Drag &amp; Drop Table Columns
+Work in IE10+, Google Chrome, Mozzila Firefox
 
 	<div class="table-responsive container">
 		<table class="table table-bordered">
