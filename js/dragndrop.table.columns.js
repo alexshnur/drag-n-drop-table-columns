@@ -7,7 +7,7 @@
 	}
 
 	dragableColumns = (function(){
-		function dragableColumns (table) {
+		function dragColumns (table) {
 			if (this.options.drag) {
 				_this = this;
 				cols = document.querySelectorAll(_this.options.tableClass + ' thead tr th');
@@ -24,7 +24,7 @@
 			}
 		}
 
-		dragableColumns.prototype = {
+		dragColumns.prototype = {
 			options: {
 				drag: true,
 				dragClass: 'drag',
@@ -54,7 +54,7 @@
 			},
 			handleDragLeave: function (e) {
 				if (dragSrcEnter !== e) {
-					this.classList.remove(_this.options.overClass);
+					//this.classList.remove(_this.options.overClass);
 				}
 			},
 			handleDrop: function (e) {
@@ -84,15 +84,14 @@
 			}
 		};
 
-		return dragableColumns;
+		return dragColumns;
 
 	})();
 	/*Drag and Drop Table Columns*/
 	return $.fn.extend({
 		dragableColumns: function(){
 			return this.each(function() {
-				var $table = $(this), data;
-				data = new dragableColumns($table);
+				new dragableColumns();
 			});
 		}
 	});
