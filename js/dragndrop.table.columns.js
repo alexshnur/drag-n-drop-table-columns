@@ -1,5 +1,5 @@
 /*global $:false, jQuery:false*/
-// ! Drag & Drop Table Columns v.0.1
+// ! Drag & Drop Table Columns v.0.1.2
 // by Aleksandr Nikitin (a.nikitin@i.ua)
 // https://github.com/alexshnur/drag-n-drop-table-columns
 
@@ -17,10 +17,19 @@
 			$table = table;
 			_this.options = $.extend({}, _this.options, options);
 			if (_this.options.drag) {
-				cols = $table.find('thead tr th');
+				if (/*@cc_on!@*/0) {
+					$table.find('thead tr th').each(function(){
+						$(this).html($('<a>').text($(this).text()).attr('href', '#'));
+					});
+					cols = $table.find('thead tr th');
+				} else {
+					cols = $table.find('thead tr th');
+				}
+
 				jQuery.event.props.push('dataTransfer');
 				[].forEach.call(cols, function(col){
-					$(col).attr('draggable', true);
+					col.setAttribute('draggable', true);
+
 					$(col).on('dragstart', _this.handleDragStart);
 					$(col).on('dragenter', _this.handleDragEnter);
 					$(col).on('dragover', _this.handleDragOver);
@@ -39,24 +48,25 @@
 				movedContainerSelector: '.dnd-moved'
 			},
 			handleDragStart: function(e) {
-				this.classList.add(_this.options.dragClass);
+				$(this).addClass(_this.options.dragClass);
 				dragSrcEl = this;
-				e.dataTransfer.effectAllowed = 'move';
-				e.dataTransfer.setData('text/html', this.innerHTML);
+				e.dataTransfer.effectAllowed = 'copy';
+				e.dataTransfer.setData('text/html', this.id);
 			},
 			handleDragOver: function (e) {
 				if (e.preventDefault) {
 					e.preventDefault();
 				}
-				e.dataTransfer.dropEffect = 'move';
+				e.dataTransfer.dropEffect = 'copy';
 				return false;
 			},
 			handleDragEnter: function (e) {
 				dragSrcEnter = this;
 				[].forEach.call(cols, function (col) {
-					col.classList.remove(_this.options.overClass);
+					$(col).removeClass(_this.options.overClass);
 				});
-				this.classList.add(_this.options.overClass);
+				$(this).addClass(_this.options.overClass);
+				return false;
 			},
 			handleDragLeave: function (e) {
 				if (dragSrcEnter !== e) {
@@ -74,9 +84,10 @@
 			},
 			handleDragEnd: function (e) {
 				[].forEach.call(cols, function (col) {
-					col.classList.remove(_this.options.overClass);
+					$(col).removeClass(_this.options.overClass);
 				});
-				dragSrcEl.classList.remove(_this.options.dragClass);
+				$(dragSrcEl).removeClass(_this.options.dragClass);
+				return false;
 			},
 			moveColumns: function (fromIndex, toIndex) {
 				var rows = $table.find(_this.options.movedContainerSelector);
