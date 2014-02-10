@@ -1,4 +1,4 @@
-Drag & Drop Table Columns v.0.1.2
+Drag & Drop Table Columns v.0.1.3
 =========================
 
 Demo page http://alexshnur.github.io/drag-n-drop-table-columns/
