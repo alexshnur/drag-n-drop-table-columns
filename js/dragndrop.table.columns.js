@@ -1,13 +1,19 @@
 /*global $:false, jQuery:false*/
-// ! Drag & Drop Table Columns v.0.1.2
-// by Aleksandr Nikitin (a.nikitin@i.ua)
-// https://github.com/alexshnur/drag-n-drop-table-columns
-
+/*
+Drag & Drop Table Columns v.0.1.3
+by Aleksandr Nikitin (a.nikitin@i.ua)
+https://github.com/alexshnur/drag-n-drop-table-columns
+*/
 (function($, window){
 	var cols, dragSrcEl = null, dragSrcEnter = null, dragableColumns, _this;
 
 	function insertAfter(elem, refElem) {
 		return refElem.parentNode.insertBefore(elem, refElem.nextSibling);
+	}
+
+	function isIE () {
+		var nav = navigator.userAgent.toLowerCase();
+		return (nav.indexOf('msie') !== -1) ? parseInt(nav.split('msie')[1]) : false;
 	}
 
 	dragableColumns = (function(){
@@ -17,14 +23,14 @@
 			$table = table;
 			_this.options = $.extend({}, _this.options, options);
 			if (_this.options.drag) {
-				if (/*@cc_on!@*/0) {
+				if (isIE() === 9) {
 					$table.find('thead tr th').each(function(){
-						$(this).html($('<a>').text($(this).text()).attr('href', '#'));
+						if ($(this).find('.drag-ie').length === 0) {
+							$(this).html($('<a>').html($(this).html()).attr('href', '#').addClass('drag-ie'));
+						}
 					});
-					cols = $table.find('thead tr th');
-				} else {
-					cols = $table.find('thead tr th');
 				}
+				cols = $table.find('thead tr th');
 
 				jQuery.event.props.push('dataTransfer');
 				[].forEach.call(cols, function(col){
