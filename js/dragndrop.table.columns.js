@@ -89,9 +89,16 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 				return false;
 			},
 			handleDragEnd: function (e) {
+				var colsPositions = {};
 				[].forEach.call(cols, function (col) {
 					$(col).removeClass(_this.options.overClass);
+					var name = $(col).data('name');
+					var index = $(col).index();
+					if (name) {
+                        			colsPositions[name] = index;
+					}
 				});
+				typeof _this.options.onDragEnd === 'function' && _this.options.onDragEnd(colsPositions);
 				$(dragSrcEl).removeClass(_this.options.dragClass);
 				return false;
 			},
