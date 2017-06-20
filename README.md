@@ -41,8 +41,19 @@ Work in IE9+, Google Chrome, Mozzila Firefox
 			</tbody>
 		</table>
 	</div>
+	
+To use jQuery 1.x
+
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-	<script src="js/dragndrop.table.columns.js" type="text/javascript"></script>
+	<script src="dist/for-jQuery1.x/dragndrop.table.columns.min.js" type="text/javascript"></script>
+	<script>
+		$('.table').dragableColumns();
+	</script>
+
+To use jQuery 3.x
+
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="dist/for-jQuery3.x/dragndrop.table.columns.min.js" type="text/javascript"></script>
 	<script>
 		$('.table').dragableColumns();
 	</script>
