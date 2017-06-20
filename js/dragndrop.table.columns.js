@@ -32,7 +32,7 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 				}
 				cols = $table.find('thead tr th');
 
-				jQuery.event.props.push('dataTransfer');
+				jQuery.event.addProp('dataTransfer');
 				[].forEach.call(cols, function(col){
 					col.setAttribute('draggable', true);
 
@@ -95,7 +95,7 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 					var name = $(col).attr('data-name');
 					var index = $(col).index();
 					if (name) {
-                        			colsPositions[name] = index;
+						colsPositions[name] = index;
 					}
 				});
 				if (typeof _this.options.onDragEnd === 'function' && _this.options.onDragEnd(colsPositions)) {
