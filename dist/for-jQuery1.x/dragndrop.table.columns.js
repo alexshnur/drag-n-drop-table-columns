@@ -64,7 +64,7 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 					e.preventDefault();
 				}
 				e.dataTransfer.dropEffect = 'copy';
-				return false;
+				return;
 			},
 			handleDragEnter: function (e) {
 				dragSrcEnter = this;
@@ -72,7 +72,7 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 					$(col).removeClass(_this.options.overClass);
 				});
 				$(this).addClass(_this.options.overClass);
-				return false;
+				return;
 			},
 			handleDragLeave: function (e) {
 				if (dragSrcEnter !== e) {
@@ -86,22 +86,14 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 				if (dragSrcEl !== e) {
 					_this.moveColumns($(dragSrcEl).index(), $(this).index());
 				}
-				return false;
+				return;
 			},
 			handleDragEnd: function (e) {
-				var colsPositions = {};
 				[].forEach.call(cols, function (col) {
 					$(col).removeClass(_this.options.overClass);
-					var name = $(col).attr('data-name');
-					var index = $(col).index();
-					if (name) {
-						colsPositions[name] = index;
-					}
 				});
-				if (typeof _this.options.onDragEnd === 'function' && _this.options.onDragEnd(colsPositions)) {
-					$(dragSrcEl).removeClass(_this.options.dragClass);
-				}
-				return false;
+				$(dragSrcEl).removeClass(_this.options.dragClass);
+				return;
 			},
 			moveColumns: function (fromIndex, toIndex) {
 				var rows = $table.find(_this.options.movedContainerSelector);
