@@ -57,3 +57,11 @@ To use jQuery 3.x
 	<script>
 		$('.table').dragableColumns();
 	</script>
+	
+Parameters
+
+	**drag** - default boolean true.
+	**dragClass** - this is class for drag event default 'drag'.
+	**overClass** - this is class for over event default 'over',
+	**movedContainerSelector** - default '.dnd-moved'
+	**onDragEnd** - this is the function to which the parameter is passed colPositions = {array: [], object: ()}
