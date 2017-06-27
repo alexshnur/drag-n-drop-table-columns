@@ -1,6 +1,6 @@
 /*global $:false, jQuery:false*/
 /*
-Drag & Drop Table Columns v.0.1.4
+Drag & Drop Table Columns v.3.1.5
 for jQuery 3.x
 by Oleksandr Nikitin (a.nikitin@i.ua)
 https://github.com/alexshnur/drag-n-drop-table-columns
@@ -90,9 +90,19 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 				return;
 			},
 			handleDragEnd: function (e) {
+				var colPositions = {
+						array: [],
+						object: {}
+					};
 				[].forEach.call(cols, function (col) {
+					var name = $(col).attr('data-name') || $(col).index();
 					$(col).removeClass(_this.options.overClass);
+					colPositions.object[name] = $(col).index();
+					colPositions.array.push($(col).index());
 				});
+				if (typeof _this.options.onDragEnd === 'function') {
+					_this.options.onDragEnd(colPositions);
+				}
 				$(dragSrcEl).removeClass(_this.options.dragClass);
 				return;
 			},
