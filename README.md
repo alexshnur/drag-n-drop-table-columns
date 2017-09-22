@@ -68,4 +68,4 @@ Parameters
 
 **movedContainerSelector** - default '.dnd-moved'.
 
-**onDragEnd** - this is the function to which the parameter is passed `colPositions = {array: [], object: ()}`.
+**onDragEnd** - this is the function to which the parameter is passed `colPositions = {array: [], object: {}}`.
