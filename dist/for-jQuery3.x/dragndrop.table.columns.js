@@ -25,13 +25,13 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 			_this.options = $.extend({}, _this.options, options);
 			if (_this.options.drag) {
 				if (isIE() === 9) {
-					$table.find('thead tr th').each(function(){
+					$table.find('thead tr th:not(.no-drag)').each(function(){
 						if ($(this).find('.drag-ie').length === 0) {
 							$(this).html($('<a>').html($(this).html()).attr('href', '#').addClass('drag-ie'));
 						}
 					});
 				}
-				cols = $table.find('thead tr th');
+				cols = $table.find('thead tr th:not(.no-drag)');
 
 				jQuery.event.addProp('dataTransfer');
 				[].forEach.call(cols, function(col){
@@ -52,7 +52,8 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 				drag: true,
 				dragClass: 'drag',
 				overClass: 'over',
-				movedContainerSelector: '.dnd-moved'
+				movedContainerSelector: '.dnd-moved',
+				additionalTableSelector: null
 			},
 			handleDragStart: function(e) {
 				$(this).addClass(_this.options.dragClass);
@@ -114,6 +115,23 @@ https://github.com/alexshnur/drag-n-drop-table-columns
 					} else if (toIndex < $table.find('thead tr th').length - 1) {
 						rows[i].insertBefore(rows[i].children[fromIndex], rows[i].children[toIndex]);
 					}
+				}
+
+				if (_this.options.additionalTableSelector != null) {
+					var originalTable = $table;
+
+					$table = $(_this.options.additionalTableSelector);
+
+					var rows = $table.find(_this.options.movedContainerSelector);
+					for (var i = 0; i < rows.length; i++) {
+						if (toIndex > fromIndex) {
+							insertAfter(rows[i].children[fromIndex], rows[i].children[toIndex]);
+						} else if (toIndex < $table.find('th, td').length - 1) {
+							rows[i].insertBefore(rows[i].children[fromIndex], rows[i].children[toIndex]);
+						}
+					}
+
+					$table = originalTable;
 				}
 			}
 		};
